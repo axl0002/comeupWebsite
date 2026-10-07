@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+/* The app's light palette (lib/utils/palette.dart, AppPalette.light) and its
+   depth presets (lib/utils/theme.dart, NeuShadows). Every surface is the base
+   grey; raised or pressed-in is read purely from the pair of shadows, light
+   from the top-left and dark from the bottom-right. One soft blue accent. */
+:root {
+  --background: #e8eaec;
+  --surface-high: #eef0f2;
+  --border: rgba(13, 39, 80, 0.08);
+  --accent: #6ea8ff;
+  --accent-bright: #9cc3ff;
+  --accent-text: #2f6fd6;
+  --accent-soft: rgba(110, 168, 255, 0.16);
+  --danger: #e5484d;
+  --text: #1f2430;
+  --muted: #474e5b;
+  --inactive: #9aa0ab;
+  --unselected: #b9bec7;
+  --shadow-dark: 13, 39, 80; /* #0D2750 */
+  --shadow-light: 255, 255, 255;
+  --radius-card: 24px;
+  --radius-control: 18px;
+  --radius-field: 16px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface-high: var(--surface-high);
+  --color-accent: var(--accent);
+  --color-accent-bright: var(--accent-bright);
+  --color-accent-text: var(--accent-text);
+  --color-danger: var(--danger);
+  --color-foreground: var(--text);
+  --color-muted: var(--muted);
+  --color-inactive: var(--inactive);
+  --color-unselected: var(--unselected);
+  --font-sans: var(--font-inter);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Raised, by depth: chip / control / card / bar. */
+.neu-chip {
+  background: var(--background);
+  box-shadow:
+    3px 3px 8px rgba(var(--shadow-dark), 0.12),
+    -3px -3px 8px rgba(var(--shadow-light), 0.9);
+}
+.neu-control {
+  background: var(--background);
+  box-shadow:
+    5px 5px 12px rgba(var(--shadow-dark), 0.14),
+    -5px -5px 12px rgba(var(--shadow-light), 0.9);
+}
+.neu-card {
+  background: var(--background);
+  box-shadow:
+    9px 9px 22px rgba(var(--shadow-dark), 0.14),
+    -8px -8px 20px rgba(var(--shadow-light), 0.9);
+}
+.neu-bar {
+  background: var(--background);
+  box-shadow:
+    10px 12px 28px rgba(var(--shadow-dark), 0.16),
+    -8px -8px 24px rgba(var(--shadow-light), 0.9);
+}
+
+/* Pressed in: fields, wells, selected states. */
+.neu-inset {
+  background: var(--background);
+  box-shadow:
+    inset 5px 5px 10px rgba(var(--shadow-dark), 0.16),
+    inset -5px -5px 10px rgba(var(--shadow-light), 0.64);
+}
+.neu-inset-sm {
+  background: var(--background);
+  box-shadow:
+    inset 3px 3px 6px rgba(var(--shadow-dark), 0.16),
+    inset -3px -3px 6px rgba(var(--shadow-light), 0.64);
+}
+
+/* A button sinks when pressed, like NeuButton in the app (140 ms). */
+.neu-button {
+  background: var(--background);
+  border-radius: var(--radius-control);
+  box-shadow:
+    5px 5px 12px rgba(var(--shadow-dark), 0.14),
+    -5px -5px 12px rgba(var(--shadow-light), 0.9);
+  transition:
+    box-shadow 140ms var(--ease-out),
+    transform 140ms var(--ease-out),
+    color 140ms var(--ease-out);
+}
+.neu-button:hover {
+  transform: translateY(-1px);
+}
+.neu-button:active {
+  transform: scale(0.98);
+  box-shadow:
+    inset 5px 5px 10px rgba(var(--shadow-dark), 0.16),
+    inset -5px -5px 10px rgba(var(--shadow-light), 0.64);
+}
+
+/* Legal pages: long text in the app's two text colours. */
+.legal h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+.legal h2:first-child {
+  margin-top: 0;
+}
+.legal p,
+.legal li {
+  color: var(--muted);
+  line-height: 1.65;
+}
+.legal p + p {
+  margin-top: 0.75rem;
+}
+.legal ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-top: 0.75rem;
+  display: grid;
+  gap: 0.5rem;
+}
+.legal li::marker {
+  color: var(--accent-text);
+}
+.legal a {
+  color: var(--accent-text);
+  font-weight: 600;
+}
+.legal a:hover {
+  text-decoration: underline;
+}
+.legal strong {
+  color: var(--text);
+  font-weight: 600;
+}
