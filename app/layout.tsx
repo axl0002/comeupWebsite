@@ -9,9 +9,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://getcomeup.com"),
-  title: "Comeup — lock in with your squad",
+  title: "Comeup — lock in with your friends",
   description:
-    "Post a proof photo when you show up. It lands on your squad's home screens the moment you do.",
+    "Lock in with your friends. Proof photos from your squad, straight onto your home screen.",
   keywords: [
     "accountability app",
     "squad",
@@ -23,18 +23,18 @@ export const metadata: Metadata = {
   ],
   icons: { icon: "/icon.png", apple: "/icon.png" },
   openGraph: {
-    title: "Comeup — lock in with your squad",
+    title: "Comeup — lock in with your friends",
     description:
-      "Proof photos from your squad, straight onto your home screen.",
+      "Lock in with your friends. Proof photos from your squad, straight onto your home screen.",
     type: "website",
     url: "https://getcomeup.com",
     images: ["/icon.png"],
   },
   twitter: {
     card: "summary",
-    title: "Comeup — lock in with your squad",
+    title: "Comeup — lock in with your friends",
     description:
-      "Proof photos from your squad, straight onto your home screen.",
+      "Lock in with your friends. Proof photos from your squad, straight onto your home screen.",
     images: ["/icon.png"],
   },
 };
